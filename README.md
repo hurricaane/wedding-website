@@ -77,7 +77,7 @@ Ce site web sert d'invitation numérique et de centre d'information pour la cél
 ## 🚀 Démarrage
 
 ### Prérequis
-- Node.js 18+ et npm/pnpm
+- Node.js 18+ et pnpm
 - Git pour le contrôle de version
 - Compte Resend pour l'envoi d'emails
 
@@ -102,23 +102,23 @@ git clone <url-du-dépôt>
 cd wedding-website
 
 # Installer les dépendances
-npm install
+pnpm install
 
 # Configurer les variables d'environnement
 cp .env.example .env
 # Éditer .env avec vos clés API
 
 # Démarrer le serveur de développement
-npm run dev
+pnpm run dev
 ```
 
 ### Commandes de Développement
 ```bash
-npm run dev        # Démarrer le serveur de développement SSR
-npm run build      # Construire pour la production
-npm run preview    # Prévisualiser le build de production
-npm run lint       # Exécuter ESLint
-npm run typecheck  # Exécuter la vérification TypeScript
+pnpm run dev        # Démarrer le serveur de développement SSR
+pnpm run build      # Construire pour la production
+pnpm run preview    # Prévisualiser le build de production
+pnpm run lint       # Exécuter ESLint
+pnpm run typecheck  # Exécuter la vérification TypeScript
 ```
 
 ## 📁 Structure du Projet
@@ -154,10 +154,10 @@ Le site web utilise le rendu côté serveur (SSR) et peut être déployé sur :
 ### Configuration de Production
 ```bash
 # Construire l'application
-npm run build
+pnpm run build
 
 # Démarrer en production
-npm run preview
+pnpm run preview
 ```
 
 ### Variables d'Environnement Production

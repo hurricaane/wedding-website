@@ -7,8 +7,8 @@ Migration of Yannick & Louise wedding website from React/Vite to Nuxt 4 with Typ
 - **Framework**: Nuxt 4 (Vue 3 + SSR/SSG)
 - **Language**: TypeScript
 - **Styling**: TailwindCSS v4
-- **Package Manager**: npm/pnpm
-- **Deployment**: Static generation (SSG)
+- **Package Manager**: pnpm
+- **Deployment**: Server-side rendering (SSR)
 
 ## Project Requirements
 
@@ -54,12 +54,11 @@ Migration of Yannick & Louise wedding website from React/Vite to Nuxt 4 with Typ
 ```
 
 ### Development Commands
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run generate` - Generate static site
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run typecheck` - Run TypeScript checking
+- `pnpm run dev` - Start development server
+- `pnpm run build` - Build for production
+- `pnpm run preview` - Preview production build
+- `pnpm run lint` - Run ESLint
+- `pnpm run typecheck` - Run TypeScript checking
 
 ### Git Conventions
 **IMPORTANT**: All commits MUST use the Conventional Commit format:
