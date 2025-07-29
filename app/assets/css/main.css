@@ -3,7 +3,40 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Custom variants for wedding interactions */
+@custom-variant elegant-hover (&:hover:not(:disabled));
+@custom-variant group-elegant (&:is(.group:hover *));
+@custom-variant wedding-focus (&:focus-visible);
+
+/* Custom utilities for wedding elegance */
+@utility elegant-shadow {
+  box-shadow: 
+    0 1px 3px oklch(0.82 0.045 85.87 / 0.12),
+    0 1px 2px oklch(0.82 0.045 85.87 / 0.24);
+}
+
+@utility gold-shimmer {
+  background: linear-gradient(
+    45deg,
+    oklch(0.75 0.12 95.24),
+    oklch(0.80 0.10 95.24),
+    oklch(0.75 0.12 95.24)
+  );
+  background-size: 200% 200%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@utility champagne-gradient {
+  background: linear-gradient(
+    135deg,
+    oklch(0.95 0.015 85.87) 0%,
+    oklch(0.82 0.045 85.87) 50%,
+    oklch(0.78 0.08 75.46) 100%
+  );
+}
+
 @theme inline {
+  /* Base colors referencing CSS variables */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -28,10 +61,71 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
+
+  /* Wedding-specific color palette */
+  --color-ivory-50: oklch(0.99 0.002 85.87);
+  --color-ivory-100: oklch(0.98 0.004 85.87);
+  --color-ivory-200: oklch(0.96 0.008 85.87);
+  --color-ivory-300: oklch(0.94 0.012 85.87);
+  --color-ivory-400: oklch(0.92 0.016 85.87);
+  --color-ivory-500: oklch(0.90 0.020 85.87);
+  --color-ivory-600: oklch(0.85 0.025 85.87);
+  --color-ivory-700: oklch(0.75 0.030 85.87);
+  --color-ivory-800: oklch(0.65 0.035 85.87);
+  --color-ivory-900: oklch(0.50 0.040 85.87);
+
+  --color-champagne-50: oklch(0.95 0.015 85.87);
+  --color-champagne-100: oklch(0.90 0.025 85.87);
+  --color-champagne-200: oklch(0.85 0.035 85.87);
+  --color-champagne-300: oklch(0.82 0.045 85.87);
+  --color-champagne-400: oklch(0.78 0.055 85.87);
+  --color-champagne-500: oklch(0.75 0.065 85.87);
+  --color-champagne-600: oklch(0.70 0.075 85.87);
+  --color-champagne-700: oklch(0.65 0.085 85.87);
+  --color-champagne-800: oklch(0.55 0.095 85.87);
+  --color-champagne-900: oklch(0.45 0.105 85.87);
+
+  --color-gold-50: oklch(0.92 0.040 95.24);
+  --color-gold-100: oklch(0.88 0.060 95.24);
+  --color-gold-200: oklch(0.84 0.080 95.24);
+  --color-gold-300: oklch(0.80 0.100 95.24);
+  --color-gold-400: oklch(0.75 0.120 95.24);
+  --color-gold-500: oklch(0.70 0.140 95.24);
+  --color-gold-600: oklch(0.65 0.160 95.24);
+  --color-gold-700: oklch(0.58 0.180 95.24);
+  --color-gold-800: oklch(0.50 0.200 95.24);
+  --color-gold-900: oklch(0.40 0.220 95.24);
+
+  --color-rose-gold-50: oklch(0.92 0.025 75.46);
+  --color-rose-gold-100: oklch(0.88 0.035 75.46);
+  --color-rose-gold-200: oklch(0.84 0.045 75.46);
+  --color-rose-gold-300: oklch(0.80 0.055 75.46);
+  --color-rose-gold-400: oklch(0.78 0.080 75.46);
+  --color-rose-gold-500: oklch(0.72 0.100 75.46);
+  --color-rose-gold-600: oklch(0.68 0.120 75.46);
+  --color-rose-gold-700: oklch(0.62 0.140 75.46);
+  --color-rose-gold-800: oklch(0.55 0.160 75.46);
+  --color-rose-gold-900: oklch(0.45 0.180 75.46);
+
+  /* Elegant typography */
+  --font-serif: "Playfair Display", "Times New Roman", serif;
+  --font-sans: "Inter", "Helvetica Neue", sans-serif;
+  --font-script: "Dancing Script", cursive;
+
+  /* Refined radius values */
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
   --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  /* Elegant spacing scale */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-26: 6.5rem;
+  --spacing-30: 7.5rem;
+
+  /* Sidebar colors */
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -43,39 +137,52 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Wedding Theme - Ivory, Champagne & Gold */
+  --background: oklch(0.98 0.006 85.87); /* Soft ivory */
+  --foreground: oklch(0.25 0.015 85.87); /* Deep charcoal for text */
+  --card: oklch(0.995 0.004 85.87); /* Pure ivory */
+  --card-foreground: oklch(0.25 0.015 85.87);
+  --popover: oklch(0.995 0.004 85.87);
+  --popover-foreground: oklch(0.25 0.015 85.87);
+  
+  /* Primary: Elegant Champagne */
+  --primary: oklch(0.82 0.045 85.87); /* Rich champagne */
+  --primary-foreground: oklch(0.15 0.015 85.87); /* Dark text on champagne */
+  
+  /* Secondary: Warm Gold */
+  --secondary: oklch(0.75 0.12 95.24); /* Warm gold */
+  --secondary-foreground: oklch(0.15 0.015 85.87);
+  
+  /* Muted: Soft neutral */
+  --muted: oklch(0.94 0.01 85.87); /* Light champagne */
+  --muted-foreground: oklch(0.45 0.02 85.87); /* Muted text */
+  
+  /* Accent: Rose gold */
+  --accent: oklch(0.78 0.08 75.46); /* Rose gold accent */
+  --accent-foreground: oklch(0.15 0.015 85.87);
+  
+  --destructive: oklch(0.65 0.15 25.00); /* Soft red for errors */
+  --destructive-foreground: oklch(0.98 0.006 85.87);
+  --border: oklch(0.88 0.02 85.87); /* Subtle champagne border */
+  --input: oklch(0.92 0.015 85.87); /* Input background */
+  --ring: oklch(0.75 0.12 95.24); /* Focus ring - gold */
+  
+  /* Chart colors - wedding palette */
+  --chart-1: oklch(0.82 0.045 85.87); /* Champagne */
+  --chart-2: oklch(0.75 0.12 95.24); /* Gold */
+  --chart-3: oklch(0.78 0.08 75.46); /* Rose gold */
+  --chart-4: oklch(0.7 0.08 110.25); /* Sage green accent */
+  --chart-5: oklch(0.65 0.05 320.67); /* Dusty rose accent */
+  
+  --radius: 0.5rem; /* Slightly softer corners for elegance */
+  --sidebar: oklch(0.995 0.004 85.87);
+  --sidebar-foreground: oklch(0.25 0.015 85.87);
+  --sidebar-primary: oklch(0.82 0.045 85.87);
+  --sidebar-primary-foreground: oklch(0.15 0.015 85.87);
+  --sidebar-accent: oklch(0.94 0.01 85.87);
+  --sidebar-accent-foreground: oklch(0.25 0.015 85.87);
+  --sidebar-border: oklch(0.88 0.02 85.87);
+  --sidebar-ring: oklch(0.75 0.12 95.24);
 }
 
 .dark {
@@ -113,11 +220,91 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
+/* Keyframes for wedding animations */
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  }
+  
+  /* Elegant typography scale */
+  h1 {
+    @apply font-serif text-4xl lg:text-6xl font-light tracking-tight text-foreground;
+  }
+  
+  h2 {
+    @apply font-serif text-3xl lg:text-4xl font-light tracking-tight text-foreground;
+  }
+  
+  h3 {
+    @apply font-serif text-2xl lg:text-3xl font-light tracking-tight text-foreground;
+  }
+  
+  h4 {
+    @apply font-serif text-xl lg:text-2xl font-normal text-foreground;
+  }
+  
+  h5 {
+    @apply font-serif text-lg lg:text-xl font-normal text-foreground;
+  }
+  
+  h6 {
+    @apply font-serif text-base lg:text-lg font-normal text-foreground;
+  }
+  
+  p {
+    @apply font-sans text-base lg:text-lg leading-relaxed text-muted-foreground;
+  }
+  
+  /* Elegant form elements */
+  input, textarea, select {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    @apply ring-2 ring-gold-400 ring-offset-2 ring-offset-background;
+  }
+  
+  /* Smooth transitions for interactive elements */
+  button, a, [role="button"] {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  /* Wedding-specific utility classes */
+  .wedding-script {
+    font-family: var(--font-script);
+  }
+  
+  .elegant-animation {
+    animation: fade-in-up 0.8s ease-out;
+  }
+  
+  .gentle-float {
+    animation: gentle-float 6s ease-in-out infinite;
   }
 }
