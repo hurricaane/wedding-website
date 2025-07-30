@@ -30,13 +30,7 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  modules: ["shadcn-nuxt", "@nuxt/icon", "@nuxt/image"],
-
-  image: {
-    quality: 85,
-    format: ['webp', 'jpg'],
-    densities: [1, 2]
-  },
+  modules: ["shadcn-nuxt", "@nuxt/icon"],
   shadcn: {
     /**
      * Prefix for all the imported component
