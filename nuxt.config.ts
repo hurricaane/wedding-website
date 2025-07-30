@@ -20,7 +20,7 @@ export default defineNuxtConfig({
         },
         {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600&family=Inter:wght@400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap'
+          href: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap'
         }
       ]
     }
@@ -30,7 +30,13 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  modules: ["shadcn-nuxt"],
+  modules: ["shadcn-nuxt", "@nuxt/icon", "@nuxt/image"],
+
+  image: {
+    quality: 85,
+    format: ['webp', 'jpg'],
+    densities: [1, 2]
+  },
   shadcn: {
     /**
      * Prefix for all the imported component
