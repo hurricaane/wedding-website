@@ -10,7 +10,7 @@
 
 /* Custom utilities for wedding elegance */
 @utility elegant-shadow {
-  box-shadow: 
+  box-shadow:
     0 1px 3px oklch(0.82 0.045 85.87 / 0.12),
     0 1px 2px oklch(0.82 0.045 85.87 / 0.24);
 }
@@ -19,7 +19,7 @@
   background: linear-gradient(
     45deg,
     oklch(0.75 0.12 95.24),
-    oklch(0.80 0.10 95.24),
+    oklch(0.8 0.1 95.24),
     oklch(0.75 0.12 95.24)
   );
   background-size: 200% 200%;
@@ -68,48 +68,48 @@
   --color-ivory-200: oklch(0.96 0.008 85.87);
   --color-ivory-300: oklch(0.94 0.012 85.87);
   --color-ivory-400: oklch(0.92 0.016 85.87);
-  --color-ivory-500: oklch(0.90 0.020 85.87);
+  --color-ivory-500: oklch(0.9 0.02 85.87);
   --color-ivory-600: oklch(0.85 0.025 85.87);
-  --color-ivory-700: oklch(0.75 0.030 85.87);
+  --color-ivory-700: oklch(0.75 0.03 85.87);
   --color-ivory-800: oklch(0.65 0.035 85.87);
-  --color-ivory-900: oklch(0.50 0.040 85.87);
+  --color-ivory-900: oklch(0.5 0.04 85.87);
 
   --color-champagne-50: oklch(0.95 0.015 85.87);
-  --color-champagne-100: oklch(0.90 0.025 85.87);
+  --color-champagne-100: oklch(0.9 0.025 85.87);
   --color-champagne-200: oklch(0.85 0.035 85.87);
   --color-champagne-300: oklch(0.82 0.045 85.87);
   --color-champagne-400: oklch(0.78 0.055 85.87);
   --color-champagne-500: oklch(0.75 0.065 85.87);
-  --color-champagne-600: oklch(0.70 0.075 85.87);
+  --color-champagne-600: oklch(0.7 0.075 85.87);
   --color-champagne-700: oklch(0.65 0.085 85.87);
   --color-champagne-800: oklch(0.55 0.095 85.87);
   --color-champagne-900: oklch(0.45 0.105 85.87);
 
-  --color-gold-50: oklch(0.92 0.040 95.24);
-  --color-gold-100: oklch(0.88 0.060 95.24);
-  --color-gold-200: oklch(0.84 0.080 95.24);
-  --color-gold-300: oklch(0.80 0.100 95.24);
-  --color-gold-400: oklch(0.75 0.120 95.24);
-  --color-gold-500: oklch(0.70 0.140 95.24);
-  --color-gold-600: oklch(0.65 0.160 95.24);
-  --color-gold-700: oklch(0.58 0.180 95.24);
-  --color-gold-800: oklch(0.50 0.200 95.24);
-  --color-gold-900: oklch(0.40 0.220 95.24);
+  --color-gold-50: oklch(0.92 0.04 95.24);
+  --color-gold-100: oklch(0.88 0.06 95.24);
+  --color-gold-200: oklch(0.84 0.08 95.24);
+  --color-gold-300: oklch(0.8 0.1 95.24);
+  --color-gold-400: oklch(0.75 0.12 95.24);
+  --color-gold-500: oklch(0.7 0.14 95.24);
+  --color-gold-600: oklch(0.65 0.16 95.24);
+  --color-gold-700: oklch(0.58 0.18 95.24);
+  --color-gold-800: oklch(0.5 0.2 95.24);
+  --color-gold-900: oklch(0.4 0.22 95.24);
 
   --color-rose-gold-50: oklch(0.92 0.025 75.46);
   --color-rose-gold-100: oklch(0.88 0.035 75.46);
   --color-rose-gold-200: oklch(0.84 0.045 75.46);
-  --color-rose-gold-300: oklch(0.80 0.055 75.46);
-  --color-rose-gold-400: oklch(0.78 0.080 75.46);
-  --color-rose-gold-500: oklch(0.72 0.100 75.46);
-  --color-rose-gold-600: oklch(0.68 0.120 75.46);
-  --color-rose-gold-700: oklch(0.62 0.140 75.46);
-  --color-rose-gold-800: oklch(0.55 0.160 75.46);
-  --color-rose-gold-900: oklch(0.45 0.180 75.46);
+  --color-rose-gold-300: oklch(0.8 0.055 75.46);
+  --color-rose-gold-400: oklch(0.78 0.08 75.46);
+  --color-rose-gold-500: oklch(0.72 0.1 75.46);
+  --color-rose-gold-600: oklch(0.68 0.12 75.46);
+  --color-rose-gold-700: oklch(0.62 0.14 75.46);
+  --color-rose-gold-800: oklch(0.55 0.16 75.46);
+  --color-rose-gold-900: oklch(0.45 0.18 75.46);
 
   /* Elegant typography */
   --font-serif: "Playfair Display", "Times New Roman", serif;
-  --font-sans: "Inter", "Helvetica Neue", sans-serif;
+  --font-sans: "Source Sans Pro", "Helvetica Neue", sans-serif;
   --font-script: "Dancing Script", cursive;
 
   /* Refined radius values */
@@ -134,28 +134,22 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --animate-accordion-down: 
-    accordion-down 0.2s ease-out;
-  --animate-accordion-up: 
-    accordion-up 0.2s ease-out;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
   @keyframes accordion-down {
-  from {
-    height: 
-    0;
+    from {
+      height: 0;
     }
-  to {
-    height: 
-    var(--reka-accordion-content-height);
+    to {
+      height: var(--reka-accordion-content-height);
     }
   }
   @keyframes accordion-up {
-  from {
-    height: 
-    var(--reka-accordion-content-height);
+    from {
+      height: var(--reka-accordion-content-height);
     }
-  to {
-    height: 
-    0;
+    to {
+      height: 0;
     }
   }
 }
@@ -185,7 +179,7 @@
   --accent: oklch(0.78 0.08 75.46); /* Rose gold accent */
   --accent-foreground: oklch(0.15 0.015 85.87);
 
-  --destructive: oklch(0.65 0.15 25.00); /* Soft red for errors */
+  --destructive: oklch(0.65 0.15 25); /* Soft red for errors */
   --destructive-foreground: oklch(0.98 0.006 85.87);
   --border: oklch(0.88 0.02 85.87); /* Subtle champagne border */
   --input: oklch(0.92 0.015 85.87); /* Input background */
@@ -246,13 +240,23 @@
 
 /* Keyframes for wedding animations */
 @keyframes shimmer {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 @keyframes gentle-float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 @keyframes fade-in-up {
@@ -273,7 +277,10 @@
 
   body {
     @apply bg-background text-foreground font-sans;
-    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    font-feature-settings:
+      "kern" 1,
+      "liga" 1,
+      "calt" 1;
   }
 
   /* Elegant typography scale */
@@ -306,16 +313,22 @@
   }
 
   /* Elegant form elements */
-  input, textarea, select {
+  input,
+  textarea,
+  select {
     @apply transition-all duration-300 ease-out;
   }
 
-  input:focus, textarea:focus, select:focus {
+  input:focus,
+  textarea:focus,
+  select:focus {
     @apply ring-2 ring-gold-400 ring-offset-2 ring-offset-background;
   }
 
   /* Smooth transitions for interactive elements */
-  button, a, [role="button"] {
+  button,
+  a,
+  [role="button"] {
     @apply transition-all duration-300 ease-out;
   }
 
