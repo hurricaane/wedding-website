@@ -56,21 +56,33 @@
         </p>
       </div>
 
-      <div class="space-y-4">
+      <div class="space-y-6">
         <p
           class="text-lg text-foreground/90 max-w-2xl mx-auto leading-relaxed font-medium"
         >
-          Venez partager avec nous ce moment magique où deux cœurs ne feront plus qu'un.
+          Venez partager avec nous ce moment magique où deux cœurs ne feront
+          plus qu'un.
         </p>
 
-        <Button
-          @click="navigateToRSVP"
-          size="lg"
-          class="bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 hover:scale-105 transition-all duration-300 elegant-shadow text-lg px-8 py-8 mt-4 rounded-2xl text-white font-medium border-0 cursor-pointer"
-        >
-          <Icon name="lucide:heart" class="w-6 h-6" />
-          Répondre à l'invitation
-        </Button>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button
+            @click="navigateToRSVP"
+            size="lg"
+            class="bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 hover:scale-105 transition-all duration-300 elegant-shadow text-lg px-8 py-4 h-auto rounded-2xl text-white font-semibold border-0 cursor-pointer"
+          >
+            <Icon name="lucide:heart" class="w-5 h-5 mr-2" />
+            Répondre à l'invitation
+          </Button>
+          
+          <Button
+            @click="navigateToQuestion"
+            size="lg"
+            class="bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 hover:scale-105 transition-all duration-300 elegant-shadow text-lg px-8 py-4 h-auto rounded-2xl text-white font-semibold border-0 cursor-pointer"
+          >
+            <Icon name="lucide:message-circle" class="w-5 h-5 mr-2" />
+            Poser une question
+          </Button>
+        </div>
       </div>
     </div>
   </section>
@@ -79,8 +91,12 @@
 <script setup lang="ts">
 import { Button } from "@/components/ui/button";
 
-// Navigation function using Nuxt's navigateTo
+// Navigation functions using Nuxt's navigateTo
 const navigateToRSVP = () => {
   navigateTo("/rsvp");
+};
+
+const navigateToQuestion = () => {
+  navigateTo("/question");
 };
 </script>
