@@ -7,7 +7,7 @@
         <Button
           variant="outline"
           @click="navigateHome"
-          class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-champagne-300 hover:bg-champagne-100 transition-colors"
+          class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-champagne-300 hover:bg-champagne-100 transition-colors cursor-pointer"
         >
           <Icon name="lucide:arrow-left" class="w-4 h-4" />
           Retour à l'accueil
@@ -21,7 +21,7 @@
           Réponse à l'invitation
         </h1>
         <p class="text-lg text-foreground/80">
-          Merci de confirmer votre présence avant le 15 novembre 2025
+          Merci de confirmer votre présence avant le 1er octobre 2025
         </p>
       </div>
 
@@ -150,7 +150,10 @@
           <Button
             type="submit"
             :disabled="isLoading || !isFormValid"
-            class="w-full bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 text-white font-semibold text-lg py-6 h-auto rounded-2xl elegant-shadow hover:scale-105 transition-all duration-300"
+            :class="[
+              'w-full bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 text-white font-semibold text-lg py-6 h-auto rounded-2xl elegant-shadow hover:scale-105 transition-all duration-300',
+              isLoading || !isFormValid ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
+            ]"
           >
             <Icon v-if="!isLoading" name="lucide:send" class="w-5 h-5 mr-2" />
             {{ isLoading ? "Envoi en cours..." : "Envoyer ma réponse" }}
@@ -158,6 +161,28 @@
         </form>
       </Card>
     </div>
+
+    <!-- Alert Dialog -->
+    <AlertDialog :open="showAlert" @update:open="showAlert = $event">
+      <AlertDialogContent class="max-w-md mx-auto bg-card border border-border rounded-2xl elegant-shadow">
+        <AlertDialogHeader>
+          <AlertDialogTitle class="text-xl font-serif text-foreground text-center">
+            {{ alertData.title }}
+          </AlertDialogTitle>
+          <AlertDialogDescription class="text-foreground/80 text-center leading-relaxed mt-4">
+            {{ alertData.description }}
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter class="flex justify-center mt-6">
+          <AlertDialogAction
+            @click="handleAlertClose"
+            class="bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 text-white font-semibold px-8 py-3 rounded-xl elegant-shadow hover:scale-105 transition-all duration-300 cursor-pointer"
+          >
+            {{ alertData.isSuccess ? "Parfait !" : "Compris" }}
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   </div>
 </template>
 
@@ -168,6 +193,15 @@ import { Label } from "~/components/ui/label";
 import { Card } from "~/components/ui/card";
 import { Textarea } from "~/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "~/components/ui/alert-dialog";
 
 // Page metadata
 useHead({
@@ -192,6 +226,12 @@ const formData = reactive({
 });
 
 const isLoading = ref(false);
+const showAlert = ref(false);
+const alertData = ref({
+  title: "",
+  description: "",
+  isSuccess: false,
+});
 
 // Form validation
 const isFormValid = computed(() => {
@@ -214,32 +254,70 @@ const navigateHome = () => {
 // Form submission
 const handleSubmit = async () => {
   if (!isFormValid.value) {
-    alert("Veuillez remplir tous les champs obligatoires.");
+    alertData.value = {
+      title: "Champs manquants",
+      description: "Veuillez remplir tous les champs obligatoires.",
+      isSuccess: false,
+    };
+    showAlert.value = true;
     return;
   }
 
   isLoading.value = true;
 
   try {
-    // Simulate API call (replace with actual API call)
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const response = await $fetch("/api/rsvp", {
+      method: "POST",
+      body: {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        attendance: formData.attendance,
+        dietaryRestrictions: formData.dietaryRestrictions,
+        message: formData.message,
+      },
+    });
 
-    // Success simulation (90% success rate)
-    if (Math.random() > 0.1) {
-      console.log("RSVP soumis:", formData);
-      // In a real app, you'd show a success toast
-      alert(
-        "Réponse envoyée ! Merci d'avoir confirmé votre présence. Nous avons hâte de célébrer avec vous !",
-      );
-      navigateTo("/");
+    if (response.success) {
+      console.log("RSVP soumis avec succès:", response);
+      
+      // Set different messages based on attendance
+      if (formData.attendance === "yes") {
+        alertData.value = {
+          title: "🎉 Formidable !",
+          description: "Merci d'avoir confirmé votre présence ! Nous avons hâte de célébrer avec vous ce moment magique. Vous recevrez un email de confirmation avec tous les détails sous peu.",
+          isSuccess: true,
+        };
+      } else {
+        alertData.value = {
+          title: "💕 Merci de nous avoir prévenus",
+          description: "Nous comprenons que vous ne puissiez pas être présent(e) et vous remercions de nous l'avoir fait savoir. Vous serez dans nos pensées ce jour-là !",
+          isSuccess: true,
+        };
+      }
+      
+      showAlert.value = true;
     } else {
-      throw new Error("Erreur de simulation");
+      throw new Error("Erreur lors de l'envoi");
     }
   } catch (error) {
-    // In a real app, you'd show an error toast
-    alert("Une erreur est survenue. Veuillez réessayer.");
+    console.error("Erreur RSVP:", error);
+    alertData.value = {
+      title: "Erreur d'envoi",
+      description: "Une erreur est survenue lors de l'envoi de votre réponse. Veuillez réessayer ou nous contacter directement.",
+      isSuccess: false,
+    };
+    showAlert.value = true;
   } finally {
     isLoading.value = false;
+  }
+};
+
+// Handle alert dialog close
+const handleAlertClose = () => {
+  showAlert.value = false;
+  if (alertData.value.isSuccess) {
+    navigateTo("/");
   }
 };
 

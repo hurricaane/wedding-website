@@ -7,7 +7,7 @@
         <Button
           variant="outline"
           @click="navigateHome"
-          class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-champagne-300 hover:bg-champagne-100 transition-colors"
+          class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-champagne-300 hover:bg-champagne-100 transition-colors cursor-pointer"
         >
           <Icon name="lucide:arrow-left" class="w-4 h-4" />
           Retour à l'accueil
@@ -95,7 +95,10 @@
           <Button
             type="submit"
             :disabled="isLoading || !isFormValid"
-            class="w-full bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 text-white font-semibold text-lg py-6 h-auto rounded-2xl elegant-shadow hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            :class="[
+              'w-full bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 text-white font-semibold text-lg py-6 h-auto rounded-2xl elegant-shadow hover:scale-105 transition-all duration-300',
+              isLoading || !isFormValid ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
+            ]"
           >
             <Icon v-if="!isLoading" name="lucide:send" class="w-5 h-5 mr-2" />
             {{ isLoading ? "Envoi en cours..." : "Envoyer ma question" }}
@@ -103,6 +106,28 @@
         </form>
       </div>
     </div>
+
+    <!-- Alert Dialog -->
+    <AlertDialog :open="showAlert" @update:open="showAlert = $event">
+      <AlertDialogContent class="max-w-md mx-auto bg-card border border-border rounded-2xl elegant-shadow">
+        <AlertDialogHeader>
+          <AlertDialogTitle class="text-xl font-serif text-foreground text-center">
+            {{ alertData.title }}
+          </AlertDialogTitle>
+          <AlertDialogDescription class="text-foreground/80 text-center leading-relaxed mt-4">
+            {{ alertData.description }}
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter class="flex justify-center mt-6">
+          <AlertDialogAction
+            @click="handleAlertClose"
+            class="bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 text-white font-semibold px-8 py-3 rounded-xl elegant-shadow hover:scale-105 transition-all duration-300 cursor-pointer"
+          >
+            {{ alertData.isSuccess ? "Parfait !" : "Compris" }}
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   </div>
 </template>
 
@@ -111,6 +136,15 @@ import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { Textarea } from "~/components/ui/textarea";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "~/components/ui/alert-dialog";
 
 // Page metadata
 useHead({
@@ -133,6 +167,12 @@ const formData = reactive({
 });
 
 const isLoading = ref(false);
+const showAlert = ref(false);
+const alertData = ref({
+  title: "",
+  description: "",
+  isSuccess: false,
+});
 
 // Form validation
 const isFormValid = computed(() => {
@@ -155,32 +195,57 @@ const navigateHome = () => {
 // Form submission
 const handleSubmit = async () => {
   if (!isFormValid.value) {
-    alert("Veuillez remplir tous les champs.");
+    alertData.value = {
+      title: "Champs manquants",
+      description: "Veuillez remplir tous les champs requis.",
+      isSuccess: false,
+    };
+    showAlert.value = true;
     return;
   }
 
   isLoading.value = true;
 
   try {
-    // Simulate API call (replace with actual API call)
-    await new Promise((resolve) => setTimeout(resolve, 1200));
+    const response = await $fetch("/api/question", {
+      method: "POST",
+      body: {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        message: formData.message,
+      },
+    });
 
-    // Success simulation (95% success rate)
-    if (Math.random() > 0.05) {
-      console.log("Question soumise:", formData);
-      // In a real app, you'd show a success toast
-      alert(
-        "Question envoyée ! Nous vous répondrons dans les plus brefs délais.",
-      );
-      navigateTo("/");
+    if (response.success) {
+      console.log("Question soumise avec succès:", response);
+      alertData.value = {
+        title: "❓ Question envoyée !",
+        description: "Merci pour votre question ! Nous vous répondrons dans les plus brefs délais. Vous recevrez un email de confirmation sous peu.",
+        isSuccess: true,
+      };
+      showAlert.value = true;
     } else {
-      throw new Error("Erreur de simulation");
+      throw new Error("Erreur lors de l'envoi");
     }
   } catch (error) {
-    // In a real app, you'd show an error toast
-    alert("Une erreur est survenue. Veuillez réessayer.");
+    console.error("Erreur question:", error);
+    alertData.value = {
+      title: "Erreur d'envoi",
+      description: "Une erreur est survenue lors de l'envoi de votre question. Veuillez réessayer ou nous contacter directement.",
+      isSuccess: false,
+    };
+    showAlert.value = true;
   } finally {
     isLoading.value = false;
+  }
+};
+
+// Handle alert dialog close
+const handleAlertClose = () => {
+  showAlert.value = false;
+  if (alertData.value.isSuccess) {
+    navigateTo("/");
   }
 };
 </script>
