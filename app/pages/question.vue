@@ -86,8 +86,8 @@
 
           <Button
             type="submit"
-            :disabled="isLoading"
-            class="w-full bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 text-white font-semibold text-lg py-6 h-auto rounded-2xl elegant-shadow hover:scale-105 transition-all duration-300"
+            :disabled="isLoading || !isFormValid"
+            class="w-full bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 text-white font-semibold text-lg py-6 h-auto rounded-2xl elegant-shadow hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
           >
             <Icon v-if="!isLoading" name="lucide:send" class="w-5 h-5 mr-2" />
             {{ isLoading ? 'Envoi en cours...' : 'Envoyer ma question' }}
@@ -125,6 +125,14 @@ const formData = reactive({
 
 const isLoading = ref(false)
 
+// Form validation
+const isFormValid = computed(() => {
+  if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
+    return false
+  }
+  return true
+})
+
 // Navigation
 const navigateHome = () => {
   navigateTo('/')
@@ -132,9 +140,7 @@ const navigateHome = () => {
 
 // Form submission
 const handleSubmit = async () => {
-  // Validate all fields are filled
-  if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
-    // In a real app, you'd show a toast notification
+  if (!isFormValid.value) {
     alert('Veuillez remplir tous les champs.')
     return
   }
