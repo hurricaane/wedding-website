@@ -73,7 +73,7 @@
             <Icon name="lucide:heart" class="w-5 h-5 mr-2" />
             Répondre à l'invitation
           </Button>
-          
+
           <Button
             @click="navigateToQuestion"
             size="lg"

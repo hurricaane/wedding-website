@@ -1,5 +1,7 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-ivory-100 to-champagne-200 py-12 px-6">
+  <div
+    class="min-h-screen bg-gradient-to-br from-ivory-100 to-champagne-200 py-12 px-6"
+  >
     <div class="max-w-2xl mx-auto">
       <div class="text-center mb-8">
         <Button
@@ -10,8 +12,11 @@
           <Icon name="lucide:arrow-left" class="w-4 h-4" />
           Retour à l'accueil
         </Button>
-        
-        <Icon name="lucide:message-circle" class="w-12 h-12 text-gold-500 mx-auto mb-4" />
+
+        <Icon
+          name="lucide:message-circle"
+          class="w-12 h-12 text-gold-500 mx-auto mb-4"
+        />
         <h1 class="text-3xl md:text-4xl font-serif text-foreground mb-4">
           Poser une question
         </h1>
@@ -77,10 +82,13 @@
             />
           </div>
 
-          <div class="bg-champagne-100/50 rounded-xl p-4 border border-champagne-300">
+          <div
+            class="bg-champagne-100/50 rounded-xl p-4 border border-champagne-300"
+          >
             <p class="text-sm text-foreground/75">
-              <strong>Types de questions courantes :</strong> hébergement, transport, 
-              tenue vestimentaire, programme détaillé, cadeaux, organisation pratique...
+              <strong>Types de questions courantes :</strong> hébergement,
+              transport, tenue vestimentaire, programme détaillé, cadeaux,
+              organisation pratique...
             </p>
           </div>
 
@@ -90,7 +98,7 @@
             class="w-full bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 text-white font-semibold text-lg py-6 h-auto rounded-2xl elegant-shadow hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
           >
             <Icon v-if="!isLoading" name="lucide:send" class="w-5 h-5 mr-2" />
-            {{ isLoading ? 'Envoi en cours...' : 'Envoyer ma question' }}
+            {{ isLoading ? "Envoi en cours..." : "Envoyer ma question" }}
           </Button>
         </form>
       </div>
@@ -99,72 +107,80 @@
 </template>
 
 <script setup lang="ts">
-import { Button } from '~/components/ui/button'
-import { Input } from '~/components/ui/input'
-import { Label } from '~/components/ui/label'
-import { Textarea } from '~/components/ui/textarea'
+import { Button } from "~/components/ui/button";
+import { Input } from "~/components/ui/input";
+import { Label } from "~/components/ui/label";
+import { Textarea } from "~/components/ui/textarea";
 
 // Page metadata
 useHead({
-  title: 'Question - Yannick & Louise',
+  title: "Question - Yannick & Louise",
   meta: [
     {
-      name: 'description',
-      content: 'Posez vos questions concernant le mariage de Yannick et Louise le 20 décembre 2025'
-    }
-  ]
-})
+      name: "description",
+      content:
+        "Posez vos questions concernant le mariage de Yannick et Louise le 20 décembre 2025",
+    },
+  ],
+});
 
 // Form state
 const formData = reactive({
-  firstName: '',
-  lastName: '',
-  email: '',
-  message: ''
-})
+  firstName: "",
+  lastName: "",
+  email: "",
+  message: "",
+});
 
-const isLoading = ref(false)
+const isLoading = ref(false);
 
 // Form validation
 const isFormValid = computed(() => {
-  if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
-    return false
+  if (
+    !formData.firstName ||
+    !formData.lastName ||
+    !formData.email ||
+    !formData.message
+  ) {
+    return false;
   }
-  return true
-})
+  return true;
+});
 
 // Navigation
 const navigateHome = () => {
-  navigateTo('/')
-}
+  navigateTo("/");
+};
 
 // Form submission
 const handleSubmit = async () => {
   if (!isFormValid.value) {
-    alert('Veuillez remplir tous les champs.')
-    return
+    alert("Veuillez remplir tous les champs.");
+    return;
   }
 
-  isLoading.value = true
+  isLoading.value = true;
 
   try {
     // Simulate API call (replace with actual API call)
-    await new Promise(resolve => setTimeout(resolve, 1200))
-    
+    await new Promise((resolve) => setTimeout(resolve, 1200));
+
     // Success simulation (95% success rate)
     if (Math.random() > 0.05) {
-      console.log('Question soumise:', formData)
+      console.log("Question soumise:", formData);
       // In a real app, you'd show a success toast
-      alert('Question envoyée ! Nous vous répondrons dans les plus brefs délais.')
-      navigateTo('/')
+      alert(
+        "Question envoyée ! Nous vous répondrons dans les plus brefs délais.",
+      );
+      navigateTo("/");
     } else {
-      throw new Error('Erreur de simulation')
+      throw new Error("Erreur de simulation");
     }
   } catch (error) {
     // In a real app, you'd show an error toast
-    alert('Une erreur est survenue. Veuillez réessayer.')
+    alert("Une erreur est survenue. Veuillez réessayer.");
   } finally {
-    isLoading.value = false
+    isLoading.value = false;
   }
-}
+};
 </script>
