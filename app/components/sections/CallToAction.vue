@@ -16,7 +16,7 @@
         >
           Votre présence rendrait ce jour encore plus spécial. Rejoignez-nous le
           20 décembre 2025 à Dakar pour célébrer notre amour et commencer ce
-          nouveau chapitre ensemble.
+          nouveau chapitre de notre vie.
         </p>
       </div>
 
@@ -70,7 +70,7 @@
             <Icon name="lucide:heart" class="w-5 h-5 mr-2" />
             Confirmer ma présence
           </Button>
-          
+
           <Button
             @click="navigateToQuestion"
             size="lg"
@@ -80,16 +80,6 @@
             Poser une question
           </Button>
         </div>
-
-        <p class="text-sm text-foreground/60">
-          Des questions ? Contactez-nous à
-          <a
-            href="mailto:contact@dossou.online"
-            class="text-gold-600 hover:text-gold-700 underline"
-          >
-            contact@dossou.online
-          </a>
-        </p>
       </div>
 
       <!-- Decorative Element -->
@@ -118,4 +108,3 @@ const navigateToQuestion = () => {
   navigateTo("/question");
 };
 </script>
-
