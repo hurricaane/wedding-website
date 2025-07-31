@@ -40,12 +40,12 @@
 
 <script setup lang="ts">
 interface Props {
-  isLoading: boolean
+  isLoading: boolean;
 }
 
 withDefaults(defineProps<Props>(), {
-  isLoading: true
-})
+  isLoading: true,
+});
 </script>
 
 <style scoped>
@@ -66,7 +66,14 @@ withDefaults(defineProps<Props>(), {
   position: absolute;
   inset: 0;
   /* Couleurs wedding theme - champagne to ivory gradient */
-  background: linear-gradient(135deg, #f7f3f0 0%, #f5f1eb 25%, #f9f6f2 50%, #f5f1eb 75%, #f7f3f0 100%);
+  background: linear-gradient(
+    135deg,
+    #f7f3f0 0%,
+    #f5f1eb 25%,
+    #f9f6f2 50%,
+    #f5f1eb 75%,
+    #f7f3f0 100%
+  );
   background-size: 400% 400%;
   animation: weddingGradientShift 6s ease-in-out infinite;
 }
@@ -127,7 +134,7 @@ withDefaults(defineProps<Props>(), {
 .couple-initials {
   font-size: 4rem;
   font-weight: 300;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   background: linear-gradient(135deg, #d4af37, #b8860b, #daa520);
   background-clip: text;
   -webkit-background-clip: text;
@@ -140,7 +147,7 @@ withDefaults(defineProps<Props>(), {
 .loading-title {
   font-size: 2.5rem;
   font-weight: 400;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   color: #8b5a3c;
   margin-bottom: 0.5rem;
   animation: titlePulse 2s ease-in-out infinite;
@@ -197,7 +204,8 @@ withDefaults(defineProps<Props>(), {
 
 /* Animations */
 @keyframes weddingGradientShift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -225,7 +233,8 @@ withDefaults(defineProps<Props>(), {
 }
 
 @keyframes initialsGlow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
     text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
@@ -238,7 +247,8 @@ withDefaults(defineProps<Props>(), {
 }
 
 @keyframes titlePulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -285,24 +295,24 @@ withDefaults(defineProps<Props>(), {
   .couple-initials {
     font-size: 3rem;
   }
-  
+
   .loading-title {
     font-size: 2rem;
   }
-  
+
   .wedding-date {
     font-size: 1rem;
   }
-  
+
   .loading-spinner {
     width: 60px;
     height: 60px;
   }
-  
+
   .ring-2 {
     inset: 8px;
   }
-  
+
   .ring-3 {
     inset: 16px;
   }
@@ -312,12 +322,13 @@ withDefaults(defineProps<Props>(), {
   .couple-initials {
     font-size: 2.5rem;
   }
-  
+
   .loading-title {
     font-size: 1.5rem;
   }
-  
+
   .heart {
     font-size: 1.2rem;
   }
-}</style>
+}
+</style>

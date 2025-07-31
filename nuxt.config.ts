@@ -10,20 +10,20 @@ export default defineNuxtConfig({
     head: {
       link: [
         {
-          rel: 'preconnect',
-          href: 'https://fonts.googleapis.com'
+          rel: "preconnect",
+          href: "https://fonts.googleapis.com",
         },
         {
-          rel: 'preconnect',
-          href: 'https://fonts.gstatic.com',
-          crossorigin: ''
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossorigin: "",
         },
         {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap'
-        }
-      ]
-    }
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap",
+        },
+      ],
+    },
   },
 
   vite: {
@@ -43,4 +43,3 @@ export default defineNuxtConfig({
     componentDir: "./app/components/ui",
   },
 });
-

@@ -199,4 +199,3 @@
 <script setup lang="ts">
 // Location section with ceremony and reception venues in Dakar
 </script>
-
