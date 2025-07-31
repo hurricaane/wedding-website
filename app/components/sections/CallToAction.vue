@@ -30,8 +30,8 @@
             size="1.4em"
             class="w-8 h-8 text-gold-600 mx-auto mb-3"
           />
-          <h3 class="font-semibold text-foreground mb-2">Date limite</h3>
-          <p class="text-foreground/75">15 novembre 2025</p>
+          <h3 class="font-semibold text-foreground mb-2">RSVP avant le</h3>
+          <p class="text-foreground/75">1er octobre 2025</p>
         </div>
 
         <div
@@ -68,7 +68,7 @@
             class="bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 text-white font-semibold text-lg px-10 py-4 h-auto rounded-2xl elegant-shadow hover:scale-105 transition-all duration-300 cursor-pointer"
           >
             <Icon name="lucide:heart" class="w-5 h-5 mr-2" />
-            Confirmer ma présence
+            Répondre à l'invitation
           </Button>
 
           <Button
