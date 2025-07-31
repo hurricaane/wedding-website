@@ -30,20 +30,20 @@
           <div class="space-y-4">
             <div>
               <h4 class="font-semibold text-foreground mb-2">
-                Cathédrale du Souvenir Africain
+                Église Protestante du Sénégal, Paroisse Dieuppeul
               </h4>
               <div class="space-y-2 text-foreground/75">
                 <div class="flex items-center gap-2">
                   <Icon name="lucide:map-pin" class="w-4 h-4" />
-                  <span>Avenue Pasteur, Plateau, Dakar</span>
+                  <span>Dieuppeul, Dakar</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <Icon name="lucide:clock" class="w-4 h-4" />
-                  <span>16h00 - 17h00</span>
+                  <span>14h00 - 16h00</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <Icon name="lucide:users" class="w-4 h-4" />
-                  <span>Accueil dès 15h30</span>
+                  <span>Accueil dès 13h30</span>
                 </div>
               </div>
             </div>
@@ -62,7 +62,7 @@
                 class="bg-gray-100 rounded-xl h-48 flex items-center justify-center relative overflow-hidden"
               >
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.8332603994454!2d-17.442413310973652!3d14.66540213895938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec1724a2d36862b%3A0xc3258d7ad39a18c0!2sCath%C3%A9drale%20du%20Souvenir%20Africain!5e0!3m2!1sfr!2sfr!4v1753887974880!5m2!1sfr!2sfr"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5270.8341299962985!2d-17.457713923773014!3d14.717463374202602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec172c7fcb75677%3A0x4f90700f7d1de7fb!2sEglise%20Protestante%20du%20Senegal%20(E.P.S)%2C%20Paroisse%20Dieuppeul!5e1!3m2!1sen!2sfr!4v1753966592149!5m2!1sen!2sfr"
                   width="100%"
                   height="100%"
                   style="border: 0"
@@ -85,52 +85,43 @@
             <h3 class="text-2xl font-serif text-foreground">Réception</h3>
           </div>
 
-          <div class="space-y-4">
-            <div>
-              <h4 class="font-semibold text-foreground mb-2">
-                Radisson Blu Hotel Sea Plaza
-              </h4>
-              <div class="space-y-2 text-foreground/75">
-                <div class="flex items-center gap-2">
-                  <Icon name="lucide:map-pin" class="w-4 h-4" />
-                  <span>Route de la Corniche Ouest, Dakar</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <Icon name="lucide:clock" class="w-4 h-4" />
-                  <span>18h30 - 01h00</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <Icon name="lucide:wine" class="w-4 h-4" />
-                  <span>Cocktail puis dîner</span>
+          <div class="space-y-6">
+            <!-- Coming Soon Notice -->
+            <div class="text-center py-8">
+              <div class="bg-gradient-to-br from-champagne-100 to-gold-100 rounded-2xl p-8 border-2 border-dashed border-champagne-300">
+                <Icon name="lucide:calendar-clock" class="w-16 h-16 text-gold-500 mx-auto mb-4" />
+                <h4 class="text-xl font-serif text-foreground mb-3">
+                  Lieu en cours de sélection
+                </h4>
+                <p class="text-foreground/80 leading-relaxed mb-6">
+                  Nous finalisons actuellement le choix du lieu de réception pour vous offrir un cadre exceptionnel. 
+                  <strong>Nous vous communiquerons tous les détails sous peu !</strong>
+                </p>
+                
+                <div class="space-y-3">
+                  <div class="flex items-center justify-center gap-2 text-foreground/75">
+                    <Icon name="lucide:clock" class="w-4 h-4" />
+                    <span>18h30 - 01h00 (horaire prévu)</span>
+                  </div>
+                  <div class="flex items-center justify-center gap-2 text-foreground/75">
+                    <Icon name="lucide:wine" class="w-4 h-4" />
+                    <span>Cocktail suivi d'un dîner</span>
+                  </div>
+                  <div class="flex items-center justify-center gap-2 text-foreground/75">
+                    <Icon name="lucide:map-pin" class="w-4 h-4" />
+                    <span>Dakar, Sénégal</span>
+                  </div>
                 </div>
               </div>
             </div>
 
             <div
-              class="bg-champagne-100 rounded-xl p-4 border border-champagne-300"
+              class="bg-blue-50 rounded-xl p-4 border border-blue-200"
             >
-              <p class="text-sm text-foreground/80">
-                <Icon name="lucide:car" class="w-4 h-4 inline mr-2" />
-                <strong>Transport :</strong> Navette depuis la cathédrale
-                organisée
+              <p class="text-sm text-foreground/80 text-center">
+                <Icon name="lucide:bell" class="w-4 h-4 inline mr-2" />
+                <strong>Nous vous tiendrons informés :</strong> Toutes les informations détaillées vous seront envoyées par email dès que le lieu sera confirmé
               </p>
-            </div>
-
-            <div class="mt-6">
-              <div
-                class="bg-gray-100 rounded-xl h-48 flex items-center justify-center relative overflow-hidden"
-              >
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.3099471070645!2d-17.47851131238502!3d14.695056138163746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec1729ca1bf2a41%3A0x7c056ce772b26119!2sNoom%20Dakar!5e0!3m2!1sfr!2sfr!4v1753910437700!5m2!1sfr!2sfr"
-                  width="100%"
-                  height="100%"
-                  style="border: 0"
-                  :allowfullscreen="true"
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                  class="rounded-xl"
-                ></iframe>
-              </div>
             </div>
           </div>
         </div>
@@ -154,14 +145,14 @@
         <div class="grid md:grid-cols-3 gap-6">
           <div class="text-center">
             <Icon
-              name="lucide:plane"
+              name="lucide:clock"
               size="1.4em"
               class="w-8 h-8 text-gold-600 mx-auto mb-2"
             />
-            <h5 class="font-semibold text-foreground mb-1">Aéroport</h5>
+            <h5 class="font-semibold text-foreground mb-1">Trajet</h5>
             <p class="text-base text-foreground/75">
-              Aéroport international Blaise Diagne<br />
-              45 minutes des lieux
+              Église → Lieu de réception<br />
+              Temps de trajet à confirmer
             </p>
           </div>
 
@@ -173,8 +164,8 @@
             />
             <h5 class="font-semibold text-foreground mb-1">Hébergement</h5>
             <p class="text-base text-foreground/75">
-              Radisson Blu Sea Plaza<br />
-              Tarifs préférentiels négociés
+              Contactez-nous si vous<br />
+              souhaitez de l'aide
             </p>
           </div>
 
@@ -186,8 +177,8 @@
             />
             <h5 class="font-semibold text-foreground mb-1">Transport</h5>
             <p class="text-base text-foreground/75">
-              Taxi, VTC disponibles<br />
-              Navette organisée
+              Préparez votre transport<br />
+              ou utilisez des taxis
             </p>
           </div>
         </div>

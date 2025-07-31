@@ -8,7 +8,7 @@
           class="w-16 h-16 text-gold-500 mx-auto mb-4"
         />
         <h2 class="text-3xl md:text-4xl font-serif text-foreground mb-4">
-          Bienvenue dans notre histoire
+          Notre histoire
         </h2>
         <p class="text-lg text-foreground/80">
           Découvrez notre parcours et partagez ce moment unique avec nous
@@ -76,8 +76,8 @@
             <p class="text-foreground/80 leading-relaxed mb-6">
               Après trois années merveilleuses à nous découvrir et nous aimer,
               nous sommes prêts à débuter ce nouveau chapitre de nos vies. Dans
-              notre belle ville natale de Dakar, entourés de notre foi, de nos
-              familles et de l'amour qui nous unit.
+              notre belle ville natale de Dakar, entourés de nos familles et de
+              l'amour qui nous unit.
             </p>
             <div
               class="bg-champagne-100 rounded-xl p-4 border border-champagne-300"
@@ -105,7 +105,7 @@
             class="w-10 h-10 text-gold-600 mx-auto mb-3"
           />
           <p class="text-lg text-foreground/90 font-medium">
-            Nous sommes heureux de partager notre amour et notre union avec vous
+            Nous sommes heureux de partager cet événement avec vous
           </p>
           <p class="text-foreground/75 mt-2">
             Vos sourires, votre présence et vos émotions feront de ce jour un
