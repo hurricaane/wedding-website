@@ -128,7 +128,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    "@nuxtjs/seo", // Must be first for proper SEO integration
+    "nuxt-seo-utils", // Must be first for proper SEO integration
     "shadcn-nuxt",
     "@nuxt/icon",
     "@nuxt/image",
@@ -145,3 +145,4 @@ export default defineNuxtConfig({
     componentDir: "./app/components/ui",
   },
 });
+
