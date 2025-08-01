@@ -1,32 +1,33 @@
 import { Resend } from "resend";
 
 export default defineEventHandler(async (event) => {
-  try {
-    const runtimeConfig = useRuntimeConfig();
+  const { resendApiKey, resendFromEmail, resendToEmail } =
+    useRuntimeConfig(event);
 
+  try {
     // Validate required environment variables
-    if (!runtimeConfig.resendApiKey) {
+    if (!resendApiKey) {
       throw createError({
         statusCode: 500,
         statusMessage: "Resend API key not configured",
       });
     }
 
-    if (!runtimeConfig.resendFromEmail) {
+    if (!resendFromEmail) {
       throw createError({
         statusCode: 500,
         statusMessage: "Resend from email not configured",
       });
     }
 
-    if (!runtimeConfig.resendToEmail) {
+    if (!resendToEmail) {
       throw createError({
         statusCode: 500,
         statusMessage: "Resend to email not configured",
       });
     }
 
-    const resend = new Resend(runtimeConfig.resendApiKey);
+    const resend = new Resend(resendApiKey);
     // Read and validate request body
     const body = await readBody(event);
 
@@ -42,8 +43,8 @@ export default defineEventHandler(async (event) => {
 
     // Send notification email to the couple
     const emailData = await resend.emails.send({
-      from: `Wedding Questions <${runtimeConfig.resendFromEmail}>`,
-      to: [runtimeConfig.resendToEmail],
+      from: `Wedding Questions <${resendFromEmail}>`,
+      to: [resendToEmail],
       replyTo: email,
       subject: `Question de ${firstName} ${lastName} - Mariage`,
       html: `
@@ -77,13 +78,13 @@ export default defineEventHandler(async (event) => {
           </div>
           
           <div style="text-align: center; margin-top: 20px; color: #8b4513; font-style: italic;">
-            Reçu le ${new Date().toLocaleDateString('fr-FR', { 
-              weekday: 'long', 
-              year: 'numeric', 
-              month: 'long', 
-              day: 'numeric',
-              hour: '2-digit',
-              minute: '2-digit'
+            Reçu le ${new Date().toLocaleDateString("fr-FR", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
             })}
           </div>
         </div>
@@ -92,7 +93,7 @@ export default defineEventHandler(async (event) => {
 
     // Send confirmation email to the guest
     await resend.emails.send({
-      from: `Yannick & Louise <${runtimeConfig.resendFromEmail}>`,
+      from: `Yannick & Louise <${resendFromEmail}>`,
       to: [email],
       subject: "Question reçue - Mariage Yannick & Louise",
       html: `
@@ -158,3 +159,4 @@ export default defineEventHandler(async (event) => {
     });
   }
 });
+
