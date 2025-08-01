@@ -1,32 +1,33 @@
 import { Resend } from "resend";
 
 export default defineEventHandler(async (event) => {
-  try {
-    const runtimeConfig = useRuntimeConfig();
+  const { resendApiKey, resendFromEmail, resendToEmail } =
+    useRuntimeConfig(event);
 
+  try {
     // Validate required environment variables
-    if (!runtimeConfig.resendApiKey) {
+    if (!resendApiKey) {
       throw createError({
         statusCode: 500,
         statusMessage: "Resend API key not configured",
       });
     }
 
-    if (!runtimeConfig.resendFromEmail) {
+    if (!resendFromEmail) {
       throw createError({
         statusCode: 500,
         statusMessage: "Resend from email not configured",
       });
     }
 
-    if (!runtimeConfig.resendToEmail) {
+    if (!resendToEmail) {
       throw createError({
         statusCode: 500,
         statusMessage: "Resend to email not configured",
       });
     }
 
-    const resend = new Resend(runtimeConfig.resendApiKey);
+    const resend = new Resend(resendApiKey);
     // Read and validate request body
     const body = await readBody(event);
 
@@ -49,9 +50,9 @@ export default defineEventHandler(async (event) => {
 
     // Send notification email to the couple
     const emailData = await resend.emails.send({
-      from: `Wedding RSVP <${runtimeConfig.resendFromEmail}>`,
-      to: [runtimeConfig.resendToEmail],
-      subject: `RSVP - ${attendance === 'yes' ? 'PRÉSENT' : 'ABSENT'} - ${firstName} ${lastName}`,
+      from: `Wedding RSVP <${resendFromEmail}>`,
+      to: [resendToEmail],
+      subject: `RSVP - ${attendance === "yes" ? "PRÉSENT" : "ABSENT"} - ${firstName} ${lastName}`,
       html: `
         <div style="font-family: 'Georgia', serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #fefdfb;">
           <div style="text-align: center; margin-bottom: 30px;">
@@ -114,7 +115,7 @@ export default defineEventHandler(async (event) => {
 
     // Send confirmation email to the guest
     await resend.emails.send({
-      from: `Yannick & Louise <${runtimeConfig.resendFromEmail}>`,
+      from: `Yannick & Louise <${resendFromEmail}>`,
       to: [email],
       subject: "Confirmation RSVP - Mariage Yannick & Louise",
       html: `
@@ -194,4 +195,3 @@ export default defineEventHandler(async (event) => {
     });
   }
 });
-
