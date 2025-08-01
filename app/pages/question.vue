@@ -1,3 +1,4 @@
+
 <template>
   <div
     class="min-h-screen bg-gradient-to-br from-ivory-100 to-champagne-200 py-12 px-6"
@@ -132,6 +133,47 @@
 </template>
 
 <script setup lang="ts">
+// Enhanced SEO for Question Page
+useSeoMeta({
+  title: "Posez vos questions | Yannick & Louise",
+  description: "Vous avez des questions sur notre mariage le 20 décembre 2025 à Dakar ? N'hésitez pas à nous contacter via ce formulaire simple et rapide.",
+  ogTitle: "Questions - Mariage Yannick & Louise",
+  ogDescription: "Posez vos questions sur notre mariage le 20 décembre 2025 à Dakar, Sénégal",
+  ogImage: "/wedding-contact-og.jpg",
+  ogImageAlt: "Formulaire de contact pour le mariage de Yannick et Louise",
+  twitterTitle: "Questions - Mariage Yannick & Louise",
+  twitterDescription: "Posez vos questions sur notre célébration",
+  robots: "index, follow"
+})
+
+// Breadcrumb structure
+useBreadcrumbItems([
+  {
+    title: "Accueil",
+    to: "/"
+  },
+  {
+    title: "Poser une question",
+    to: "/question"
+  }
+])
+
+// Schema.org structured data for contact page
+useSchemaOrg([
+  {
+    "@type": "ContactPage",
+    "name": "Questions - Mariage Yannick & Louise",
+    "description": "Formulaire de contact pour poser des questions sur le mariage de Yannick et Louise",
+    "url": useRuntimeConfig().public.siteUrl + "/question",
+    "mainEntity": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "availableLanguage": "French"
+    }
+  }
+])
+
+// Imports
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
@@ -145,18 +187,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "~/components/ui/alert-dialog";
-
-// Page metadata
-useHead({
-  title: "Question - Yannick & Louise",
-  meta: [
-    {
-      name: "description",
-      content:
-        "Posez vos questions concernant le mariage de Yannick et Louise le 20 décembre 2025",
-    },
-  ],
-});
 
 // Form state
 const formData = reactive({
