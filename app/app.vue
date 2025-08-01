@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-cloak v-if="isHydrated">
     <ClientOnly>
       <LoadingScreen :is-loading="isLoading" />
     </ClientOnly>
@@ -12,6 +12,7 @@
 </template>
 
 <script setup lang="ts">
+const isHydrated = ref(false);
 const { isLoading, stopLoading } = useLoading();
 
 const initializeApp = async () => {
@@ -34,8 +35,9 @@ const initializeApp = async () => {
   }
 };
 
-onMounted(() => {
-  initializeApp();
+onMounted(async () => {
+  isHydrated.value = true;
+  await initializeApp();
 });
 
 // Meta tags pour le thème wedding pendant le chargement
@@ -50,6 +52,10 @@ useHead({
 </script>
 
 <style>
+[v-cloak] {
+  display: none !important;
+}
+
 /* Styles globaux pour le thème wedding */
 html {
   color-scheme: light;

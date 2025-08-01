@@ -26,8 +26,14 @@ export default defineNuxtConfig({
           href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap",
         },
         {
-          rel: "canonical",
-          href: process.env.NUXT_PUBLIC_SITE_URL || "https://yannick-louise.com",
+          rel: "icon",
+          type: "image/x-icon",
+          href: "/favicon.ico",
+        },
+        {
+          rel: "apple-touch-icon",
+          sizes: "180x180",
+          href: "/apple-touch-icon.png",
         },
       ],
       meta: [
@@ -37,8 +43,14 @@ export default defineNuxtConfig({
         { name: "theme-color", content: "#d4af37" },
         { name: "msapplication-TileColor", content: "#d4af37" },
         { name: "author", content: "Yannick & Louise" },
-        { name: "robots", content: "index, follow" },
-        { name: "googlebot", content: "index, follow" },
+        {
+          name: "keywords",
+          content:
+            "mariage, wedding, Yannick, Louise, Dakar, Sénégal, RSVP, 20 décembre 2025",
+        },
+        { property: "og:type", content: "website" },
+        { property: "og:locale", content: "fr_FR" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
     },
   },
@@ -54,37 +66,73 @@ export default defineNuxtConfig({
     },
   },
 
-  // SEO Configuration
+  // Modern SEO Configuration with @nuxtjs/seo
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL || "https://yannick-louise.com",
-    name: "Yannick & Louise - Mariage",
-    description: "Rejoignez-nous le 20 décembre 2025 à Dakar, Sénégal pour célébrer notre union. Site officiel du mariage de Yannick et Louise.",
+    name: "Décembre 2025", // Empty site name to prevent title templating
+    description:
+      "Rejoignez-nous le 20 décembre 2025 à Dakar, Sénégal pour célébrer notre union. Site officiel du mariage de Yannick et Louise avec RSVP en ligne.",
     defaultLocale: "fr",
   },
 
-  // Sitemap Configuration
+  // Enhanced Sitemap Configuration
   sitemap: {
-    hostname: process.env.NUXT_PUBLIC_SITE_URL || "https://yannick-louise.com",
-    gzip: true,
-    routes: [
-      "/",
-      "/rsvp",
-      "/question",
-    ],
+    sources: ["/", "/rsvp", "/question"],
+    cacheMaxAgeSeconds: 86400, // 24 hours
+    strictNuxtContentPaths: true,
   },
 
-  // Robots Configuration
+  // Enhanced Robots Configuration
   robots: {
-    UserAgent: "*",
-    Allow: "/",
-    Sitemap: (process.env.NUXT_PUBLIC_SITE_URL || "https://yannick-louise.com") + "/sitemap.xml",
+    groups: [
+      {
+        userAgent: ["*"],
+        allow: ["/"],
+        disallow: [],
+      },
+    ],
+    blockAiBots: true, // Block AI crawlers for privacy
+  },
+
+  // Schema.org structured data
+  schemaOrg: {
+    identity: {
+      type: "Organization",
+      name: "Yannick & Louise - Mariage",
+      url: process.env.NUXT_PUBLIC_SITE_URL || "https://yannick-louise.com",
+      logo:
+        (process.env.NUXT_PUBLIC_SITE_URL || "https://yannick-louise.com") +
+        "/logo.png",
+    },
+  },
+
+  // SEO Utils Configuration
+  seo: {
+    fallbackTitle: false, // Disable automatic title templating
+    titleSeparator: "", // Remove separator to prevent site name appending
+    titleTemplate: "%s", // Only use the page title, no site name
+  },
+
+  // Open Graph Image Configuration
+  ogImage: {
+    enabled: true,
+    defaults: {
+      component: "Wedding",
+      width: 1200,
+      height: 630,
+    },
   },
 
   vite: {
     plugins: [tailwindcss()],
   },
 
-  modules: ["shadcn-nuxt", "@nuxt/icon", "@nuxtjs/sitemap", "@nuxtjs/robots"],
+  modules: [
+    "@nuxtjs/seo", // Must be first for proper SEO integration
+    "shadcn-nuxt",
+    "@nuxt/icon",
+    "@nuxt/image",
+  ],
   shadcn: {
     /**
      * Prefix for all the imported component

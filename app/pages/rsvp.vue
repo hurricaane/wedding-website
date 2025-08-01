@@ -1,3 +1,4 @@
+
 <template>
   <div
     class="min-h-screen bg-gradient-to-br from-ivory-100 to-champagne-200 py-12 px-6"
@@ -187,6 +188,47 @@
 </template>
 
 <script setup lang="ts">
+// Enhanced SEO for RSVP Page
+useSeoMeta({
+  title: "RSVP - Confirmez votre présence | Yannick & Louise",
+  description: "Confirmez votre présence au mariage de Yannick et Louise le 20 décembre 2025 à Dakar. Formulaire RSVP en ligne simple et rapide.",
+  ogTitle: "RSVP - Mariage Yannick & Louise",
+  ogDescription: "Confirmez votre présence à notre mariage le 20 décembre 2025 à Dakar, Sénégal",
+  ogImage: "/wedding-rsvp-og.jpg",
+  ogImageAlt: "Formulaire RSVP pour le mariage de Yannick et Louise",
+  twitterTitle: "RSVP - Mariage Yannick & Louise",
+  twitterDescription: "Confirmez votre présence à notre célébration",
+  robots: "index, follow"
+})
+
+// Breadcrumb structure
+useBreadcrumbItems([
+  {
+    title: "Accueil",
+    to: "/"
+  },
+  {
+    title: "RSVP",
+    to: "/rsvp"
+  }
+])
+
+// Schema.org structured data for RSVP page
+useSchemaOrg([
+  {
+    "@type": "WebPage",
+    "name": "RSVP - Mariage Yannick & Louise",
+    "description": "Formulaire de confirmation de présence pour le mariage de Yannick et Louise",
+    "url": useRuntimeConfig().public.siteUrl + "/rsvp",
+    "mainEntity": {
+      "@type": "Event",
+      "name": "Mariage de Yannick & Louise", 
+      "startDate": "2025-12-20T14:00:00+00:00"
+    }
+  }
+])
+
+// Imports
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
@@ -202,18 +244,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "~/components/ui/alert-dialog";
-
-// Page metadata
-useHead({
-  title: "RSVP - Yannick & Louise",
-  meta: [
-    {
-      name: "description",
-      content:
-        "Confirmez votre présence au mariage de Yannick et Louise le 20 décembre 2025",
-    },
-  ],
-});
 
 // Form state
 const formData = reactive({
