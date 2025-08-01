@@ -1,0 +1,13 @@
+# Blueprint to create web service on render
+services:
+  - name: wedding-website
+    type: web
+    plan: free
+    runtime: image
+    previews:
+      generation: automatic
+    region: frankfurt
+    domains:
+      - nkayelouise.dossouyannick.com
+    image:
+      url: ghcr.io/hurricaane/wedding-website:main
