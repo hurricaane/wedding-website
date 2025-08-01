@@ -55,9 +55,14 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
+          platforms: linux/amd64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          secrets: |
+            resend-api-key=${{ secrets.RESEND_API_KEY }}
+            resend-from-email=${{ vars.RESEND_FROM_EMAIL }}
+            resend-to-email=${{ vars.RESEND_TO_EMAIL }}
 
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v2
@@ -70,8 +75,9 @@ jobs:
         if: github.event_name != 'pull_request'
         env:
           TAG: ${{ steps.meta.outputs.tags }}
+          DIGEST: ${{ steps.push.outputs.digest }}
           DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         run: |
           curl --request GET \
-          --data-urlencode "imgURL=$REGISTRY/$IMAGE_NAME:$TAG \
+          --data-urlencode "imgURL=$REGISTRY/$IMAGE_NAME:$TAG@$DIGEST" \
           --url $DEPLOY_HOOK_URL

@@ -61,15 +61,19 @@ export default defineNuxtConfig({
     resendFromEmail: process.env.NUXT_RESEND_FROM_EMAIL,
     resendToEmail: process.env.NUXT_RESEND_TO_EMAIL,
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://yannick-louise.com",
+      siteUrl:
+        process.env.NUXT_PUBLIC_SITE_URL ||
+        "https://nkayelouise.dossouyannick.com",
       siteName: "Yannick & Louise - Mariage",
     },
   },
 
   // Modern SEO Configuration with @nuxtjs/seo
   site: {
-    url: process.env.NUXT_PUBLIC_SITE_URL || "https://yannick-louise.com",
-    name: "Décembre 2025", // Empty site name to prevent title templating
+    url:
+      process.env.NUXT_PUBLIC_SITE_URL ||
+      "https://nkayelouise.dossouyannick.com",
+    name: "Yannick & Louise - Mariage", // Empty site name to prevent title templating
     description:
       "Rejoignez-nous le 20 décembre 2025 à Dakar, Sénégal pour célébrer notre union. Site officiel du mariage de Yannick et Louise avec RSVP en ligne.",
     defaultLocale: "fr",
@@ -99,18 +103,18 @@ export default defineNuxtConfig({
     identity: {
       type: "Organization",
       name: "Yannick & Louise - Mariage",
-      url: process.env.NUXT_PUBLIC_SITE_URL || "https://yannick-louise.com",
+      url:
+        process.env.NUXT_PUBLIC_SITE_URL ||
+        "https://nkayelouise.dossouyannick.com",
       logo:
-        (process.env.NUXT_PUBLIC_SITE_URL || "https://yannick-louise.com") +
-        "/logo.png",
+        (process.env.NUXT_PUBLIC_SITE_URL ||
+          "https://nkayelouise.dossouyannick.com") + "/favicon.ico",
     },
   },
 
   // SEO Utils Configuration
   seo: {
     fallbackTitle: false, // Disable automatic title templating
-    titleSeparator: "", // Remove separator to prevent site name appending
-    titleTemplate: "%s", // Only use the page title, no site name
   },
 
   // Open Graph Image Configuration
@@ -145,4 +149,3 @@ export default defineNuxtConfig({
     componentDir: "./app/components/ui",
   },
 });
-

@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1
+
 ARG NODE_VERSION=lts-alpine
 
 FROM node:${NODE_VERSION} AS build
@@ -15,7 +17,10 @@ RUN pnpm install --frozen-lockfile --prod
 
 COPY . ./
 
-RUN pnpm run build
+RUN --mount=type=secret,id=resend-api-key,env=NUXT_RESEND_API_KEY \
+  --mount=type=secret,id=resend-from-email,env=NUXT_RESEND_FROM_EMAIL \
+  --mount=type=secret,id=resend-to-email,env=NUXT_RESEND_TO_EMAIL \
+  pnpm run build
 
 FROM node:${NODE_VERSION}
 
