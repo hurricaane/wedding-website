@@ -23,7 +23,11 @@ export default defineNuxtConfig({
         },
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600;700&family=Great+Vibes&family=Allura&family=Pinyon+Script&display=swap",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://db.onlinewebfonts.com/c/4d436237636cf4843a2b3af336b8f9dd?family=Burgues+Script+W00+Regular",
         },
         {
           rel: "icon",

@@ -110,7 +110,7 @@
   /* Elegant typography */
   --font-serif: "Playfair Display", "Times New Roman", serif;
   --font-sans: "Source Sans Pro", "Helvetica Neue", sans-serif;
-  --font-script: "Dancing Script", cursive;
+  --font-script: "Burgues Script W00 Regular", "Great Vibes", "Allura", "Pinyon Script", "Dancing Script", cursive;
 
   /* Refined radius values */
   --radius-sm: calc(var(--radius) - 2px);
