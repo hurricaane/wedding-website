@@ -1,28 +1,19 @@
-
 <template>
-  <div
-    class="min-h-screen bg-gradient-to-br from-ivory-100 to-champagne-200 py-12 px-6"
-  >
+  <div class="min-h-screen bg-gradient-to-br from-ivory-100 to-champagne-200 py-12 px-6">
     <div class="max-w-2xl mx-auto">
       <div class="text-center mb-8">
-        <Button
-          variant="outline"
-          @click="navigateHome"
-          class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-champagne-300 hover:bg-champagne-100 transition-colors cursor-pointer"
-        >
+        <Button variant="outline" @click="navigateHome"
+          class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-champagne-300 hover:bg-champagne-100 transition-colors cursor-pointer">
           <Icon name="lucide:arrow-left" class="w-4 h-4" />
           Retour à l'accueil
         </Button>
 
-        <Icon
-          name="lucide:heart"
-          class="w-12 h-12 text-gold-500 mx-auto mb-4"
-        />
+        <Icon name="lucide:heart" class="w-12 h-12 text-gold-500 mx-auto mb-4" />
         <h1 class="text-3xl md:text-4xl font-serif text-foreground mb-4">
           Réponse à l'invitation
         </h1>
         <p class="text-lg text-foreground/80">
-          Merci de confirmer votre présence avant le 1er octobre 2025
+          Merci de confirmer votre présence avant le 15 octobre 2025
         </p>
       </div>
 
@@ -34,25 +25,15 @@
               <Label for="firstName" class="text-foreground font-medium">
                 Prénom *
               </Label>
-              <Input
-                id="firstName"
-                v-model="formData.firstName"
-                class="mt-2 rounded-xl border-input focus:border-gold-500"
-                placeholder="Votre prénom"
-                required
-              />
+              <Input id="firstName" v-model="formData.firstName"
+                class="mt-2 rounded-xl border-input focus:border-gold-500" placeholder="Votre prénom" required />
             </div>
             <div>
               <Label for="lastName" class="text-foreground font-medium">
                 Nom *
               </Label>
-              <Input
-                id="lastName"
-                v-model="formData.lastName"
-                class="mt-2 rounded-xl border-input focus:border-gold-500"
-                placeholder="Votre nom"
-                required
-              />
+              <Input id="lastName" v-model="formData.lastName"
+                class="mt-2 rounded-xl border-input focus:border-gold-500" placeholder="Votre nom" required />
             </div>
           </div>
 
@@ -60,14 +41,9 @@
             <Label for="email" class="text-foreground font-medium">
               Email *
             </Label>
-            <Input
-              id="email"
-              v-model="formData.email"
-              type="email"
-              class="mt-2 rounded-xl border-input focus:border-gold-500"
-              placeholder="votre.email@exemple.com"
-              required
-            />
+            <Input id="email" v-model="formData.email" type="email"
+              class="mt-2 rounded-xl border-input focus:border-gold-500" placeholder="votre.email@exemple.com"
+              required />
           </div>
 
           <!-- Présence -->
@@ -75,34 +51,18 @@
             <Label class="text-foreground font-medium mb-4 block">
               Confirmez-vous votre présence ? *
             </Label>
-            <RadioGroup
-              v-model="formData.attendance"
-              class="grid grid-cols-1 md:grid-cols-2 gap-4"
-              required
-            >
+            <RadioGroup v-model="formData.attendance" class="grid grid-cols-1 md:grid-cols-2 gap-4" required>
               <div
-                class="flex items-center space-x-3 bg-champagne-100/50 p-4 rounded-xl border border-champagne-300 hover:bg-champagne-100 transition-colors"
-              >
-                <RadioGroupItem
-                  value="yes"
-                  id="yes"
-                  class="border-gold-500 text-gold-500"
-                />
-                <Label
-                  for="yes"
-                  class="text-foreground font-medium cursor-pointer flex-1"
-                >
+                class="flex items-center space-x-3 bg-champagne-100/50 p-4 rounded-xl border border-champagne-300 hover:bg-champagne-100 transition-colors">
+                <RadioGroupItem value="yes" id="yes" class="border-gold-500 text-gold-500" />
+                <Label for="yes" class="text-foreground font-medium cursor-pointer flex-1">
                   Oui, je serai présent(e)
                 </Label>
               </div>
               <div
-                class="flex items-center space-x-3 bg-muted/30 p-4 rounded-xl border border-border hover:bg-muted/50 transition-colors"
-              >
+                class="flex items-center space-x-3 bg-muted/30 p-4 rounded-xl border border-border hover:bg-muted/50 transition-colors">
                 <RadioGroupItem value="no" id="no" />
-                <Label
-                  for="no"
-                  class="text-foreground font-medium cursor-pointer flex-1"
-                >
+                <Label for="no" class="text-foreground font-medium cursor-pointer flex-1">
                   Non, je ne pourrai pas venir
                 </Label>
               </div>
@@ -110,27 +70,17 @@
           </div>
 
           <!-- Restrictions alimentaires (si présent) -->
-          <Transition
-            enter-active-class="transition-all duration-300 ease-out"
-            enter-from-class="opacity-0 transform -translate-y-4"
-            enter-to-class="opacity-100 transform translate-y-0"
+          <Transition enter-active-class="transition-all duration-300 ease-out"
+            enter-from-class="opacity-0 transform -translate-y-4" enter-to-class="opacity-100 transform translate-y-0"
             leave-active-class="transition-all duration-200 ease-in"
-            leave-from-class="opacity-100 transform translate-y-0"
-            leave-to-class="opacity-0 transform -translate-y-4"
-          >
+            leave-from-class="opacity-100 transform translate-y-0" leave-to-class="opacity-0 transform -translate-y-4">
             <div v-if="formData.attendance === 'yes'">
-              <Label
-                for="dietaryRestrictions"
-                class="text-foreground font-medium"
-              >
+              <Label for="dietaryRestrictions" class="text-foreground font-medium">
                 Allergies ou régimes alimentaires particuliers
               </Label>
-              <Input
-                id="dietaryRestrictions"
-                v-model="formData.dietaryRestrictions"
+              <Input id="dietaryRestrictions" v-model="formData.dietaryRestrictions"
                 class="mt-2 rounded-xl border-input focus:border-gold-500"
-                placeholder="Végétarien, sans gluten, allergies..."
-              />
+                placeholder="Végétarien, sans gluten, allergies..." />
             </div>
           </Transition>
 
@@ -139,23 +89,16 @@
             <Label for="message" class="text-foreground font-medium">
               Message pour les mariés (optionnel)
             </Label>
-            <Textarea
-              id="message"
-              v-model="formData.message"
+            <Textarea id="message" v-model="formData.message"
               class="mt-2 rounded-xl border-input focus:border-gold-500 min-h-[100px]"
-              placeholder="Vos félicitations, souhaits ou questions..."
-            />
+              placeholder="Vos félicitations, souhaits ou questions..." />
           </div>
 
           <!-- Submit Button -->
-          <Button
-            type="submit"
-            :disabled="isLoading || !isFormValid"
-            :class="[
-              'w-full bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 text-white font-semibold text-lg py-6 h-auto rounded-2xl elegant-shadow hover:scale-105 transition-all duration-300',
-              isLoading || !isFormValid ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
-            ]"
-          >
+          <Button type="submit" :disabled="isLoading || !isFormValid" :class="[
+            'w-full bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 text-white font-semibold text-lg py-6 h-auto rounded-2xl elegant-shadow hover:scale-105 transition-all duration-300',
+            isLoading || !isFormValid ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
+          ]">
             <Icon v-if="!isLoading" name="lucide:send" class="w-5 h-5 mr-2" />
             {{ isLoading ? "Envoi en cours..." : "Envoyer ma réponse" }}
           </Button>
@@ -175,10 +118,8 @@
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter class="flex justify-center mt-6">
-          <AlertDialogAction
-            @click="handleAlertClose"
-            class="bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 text-white font-semibold px-8 py-3 rounded-xl elegant-shadow hover:scale-105 transition-all duration-300 cursor-pointer"
-          >
+          <AlertDialogAction @click="handleAlertClose"
+            class="bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 text-white font-semibold px-8 py-3 rounded-xl elegant-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
             {{ alertData.isSuccess ? "Parfait !" : "Compris" }}
           </AlertDialogAction>
         </AlertDialogFooter>
@@ -222,7 +163,7 @@ useSchemaOrg([
     "url": useRuntimeConfig().public.siteUrl + "/rsvp",
     "mainEntity": {
       "@type": "Event",
-      "name": "Mariage de Yannick & Louise", 
+      "name": "Mariage de Yannick & Louise",
       "startDate": "2025-12-20T14:00:00+00:00"
     }
   }
@@ -310,7 +251,7 @@ const handleSubmit = async () => {
 
     if (response.success) {
       console.log("RSVP soumis avec succès:", response);
-      
+
       // Set different messages based on attendance
       if (formData.attendance === "yes") {
         alertData.value = {
@@ -325,7 +266,7 @@ const handleSubmit = async () => {
           isSuccess: true,
         };
       }
-      
+
       showAlert.value = true;
     } else {
       throw new Error("Erreur lors de l'envoi");
