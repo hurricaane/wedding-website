@@ -11,88 +11,68 @@
 
     <div class="text-center px-6 max-w-4xl mx-auto elegant-animation">
       <div class="mb-8 space-y-2">
-        <!-- Family Header - Now above the image -->
-        <div class="mb-10 space-y-8">
-          <div class="space-y-6">
-            <p class="text-xl md:text-2xl font-serif text-foreground font-light mb-6 tracking-[0.2em] uppercase">
-              Les Familles
-            </p>
+        <!-- Large image positioned at top for visual impact -->
+        <div class="mb-6 flex justify-center">
+          <div class="relative">
+            <img src="/photo_couple.jpeg" alt="Louise et Yannick"
+              class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain shadow-2xl elegant-animation" />
+            <div class="absolute -bottom-2 -right-2 bg-gold-500 rounded-full p-3">
+              <Icon name="lucide:heart" class="w-6 h-6 text-white" />
+            </div>
+          </div>
+        </div>
 
-            <div class="flex items-start justify-center gap-8 md:gap-12 mb-8">
-              <div class="text-center space-y-2">
-                <div class="text-base md:text-lg font-serif text-foreground font-medium tracking-[0.15em] uppercase">
-                  Dossou</div>
-                <div class="text-base md:text-lg font-serif text-foreground font-medium tracking-[0.15em] uppercase">
-                  Idohou</div>
-              </div>
+        <!-- Elegant family introduction -->
+        <div class="mb-6 space-y-4">
+          <p class="text-xl md:text-2xl font-serif text-foreground font-light tracking-[0.2em] uppercase">
+            Les Familles
+          </p>
 
-              <div class="flex items-center justify-center mt-2">
-                <div class="text-3xl md:text-4xl text-gold-500 font-serif italic">&</div>
-              </div>
+          <div class="flex items-start justify-center gap-8 md:gap-12 mb-4">
+            <div class="text-center space-y-2">
+              <div class="text-base md:text-lg font-serif text-foreground font-medium tracking-[0.15em] uppercase">
+                Nkaye</div>
+              <div class="text-base md:text-lg font-serif text-foreground font-medium tracking-[0.15em] uppercase">
+                Nzally</div>
+            </div>
 
-              <div class="text-center space-y-2">
-                <div class="text-base md:text-lg font-serif text-foreground font-medium tracking-[0.15em] uppercase">
-                  Nkaye</div>
-                <div class="text-base md:text-lg font-serif text-foreground font-medium tracking-[0.15em] uppercase">
-                  Nzally</div>
-              </div>
+            <div class="flex items-center justify-center mt-2">
+              <div class="text-3xl md:text-4xl text-gold-500 font-serif italic">&</div>
+            </div>
+
+            <div class="text-center space-y-2">
+              <div class="text-base md:text-lg font-serif text-foreground font-medium tracking-[0.15em] uppercase">
+                Dossou</div>
+              <div class="text-base md:text-lg font-serif text-foreground font-medium tracking-[0.15em] uppercase">
+                Idohou</div>
             </div>
           </div>
 
-          <!-- Invitation Text -->
           <div class="relative">
             <div class="absolute inset-0 flex items-center justify-center opacity-10">
               <div class="w-64 h-px bg-gold-500"></div>
             </div>
-            <p
-              class="relative text-sm md:text-base font-serif text-foreground/80 font-light mb-8 tracking-[0.1em] uppercase bg-background px-6">
+            <p class="text-base md:text-lg font-serif text-foreground/80 font-light tracking-[0.1em]">
               Célèbrent l'union de leurs enfants
             </p>
           </div>
         </div>
-
-        <!-- Smaller image positioned after family text -->
-        <div class="mb-8 flex justify-center">
-          <div class="relative">
-            <img src="/photo_couple.jpeg" alt="Yannick et Louise"
-              class="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 object-contain shadow-2xl elegant-animation" />
-            <div class="absolute -bottom-2 -right-2 bg-gold-500 rounded-full p-2">
-              <Icon name="lucide:heart" class="w-5 h-5 text-white" />
-            </div>
-          </div>
+        <div class="flex items-center justify-center gap-4 mb-6">
+          <div class="h-px bg-gold-500 w-16"></div>
+          <Icon name="lucide:heart" size="1.5em" class="w-8 h-8 text-gold-600 fill-current" />
+          <div class="h-px bg-gold-500 w-16"></div>
         </div>
 
-        <!-- Names Section -->
-        <div class="mb-10 space-y-6">
-          <div class="relative">
-            <h1 class="text-4xl md:text-6xl wedding-script text-foreground drop-shadow-lg font-normal tracking-wide"
-              style="line-height: 1.2;">
-              Louise
-            </h1>
-            <div class="absolute -top-2 -left-4 w-2 h-2 bg-gold-400 rounded-full opacity-60"></div>
-            <div class="absolute -top-1 -right-6 w-1 h-1 bg-gold-300 rounded-full opacity-40"></div>
-          </div>
-
-          <div class="flex items-center justify-center gap-6 py-4">
-            <div class="w-16 md:w-20 h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent"></div>
-            <div class="relative">
-              <Icon name="lucide:heart" class="w-8 h-8 md:w-10 md:h-10 text-gold-500 fill-current drop-shadow-sm" />
-              <div class="absolute inset-0 animate-pulse">
-                <Icon name="lucide:heart" class="w-8 h-8 md:w-10 md:h-10 text-gold-300 fill-current opacity-50" />
-              </div>
-            </div>
-            <div class="w-16 md:w-20 h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent"></div>
-          </div>
-
-          <div class="relative">
-            <h1 class="text-4xl md:text-6xl wedding-script text-foreground drop-shadow-lg font-normal tracking-wide"
-              style="line-height: 1.2;">
-              Yannick
-            </h1>
-            <div class="absolute -top-1 -right-4 w-2 h-2 bg-gold-400 rounded-full opacity-60"></div>
-            <div class="absolute -top-3 -left-6 w-1 h-1 bg-gold-300 rounded-full opacity-40"></div>
-          </div>
+        <!-- Names Section with elegant combined presentation -->
+        <h1 class="text-5xl md:text-7xl font-serif text-foreground drop-shadow-sm mb-4">
+          Louise & Yannick
+        </h1>
+        <div class="flex items-center justify-center gap-4 mb-6">
+          <div class="h-px bg-gold-500 w-16"></div>
+          <Icon name="lucide:heart" size="1.5em" class="w-8 h-8 text-gold-600 fill-current" />
+          <div class="h-px bg-gold-500 w-16"></div>
         </div>
+
         <p class="text-lg md:text-xl text-foreground/80 mb-8">
           20 décembre 2025 • Dakar, Sénégal
         </p>

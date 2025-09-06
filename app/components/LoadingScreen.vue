@@ -18,8 +18,8 @@
 
           <!-- Logo/Titre du mariage -->
           <div class="loading-logo">
-            <div class="couple-initials">Y & L</div>
-            <h1 class="loading-title">Yannick & Louise</h1>
+            <div class="couple-initials">L & Y</div>
+            <h1 class="loading-title">Louise & Yannick</h1>
             <p class="wedding-date">20 décembre 2025</p>
           </div>
 
@@ -66,14 +66,12 @@ withDefaults(defineProps<Props>(), {
   position: absolute;
   inset: 0;
   /* Couleurs wedding theme - champagne to ivory gradient */
-  background: linear-gradient(
-    135deg,
-    #f7f3f0 0%,
-    #f5f1eb 25%,
-    #f9f6f2 50%,
-    #f5f1eb 75%,
-    #f7f3f0 100%
-  );
+  background: linear-gradient(135deg,
+      #f7f3f0 0%,
+      #f5f1eb 25%,
+      #f9f6f2 50%,
+      #f5f1eb 75%,
+      #f7f3f0 100%);
   background-size: 400% 400%;
   animation: weddingGradientShift 6s ease-in-out infinite;
 }
@@ -204,10 +202,12 @@ withDefaults(defineProps<Props>(), {
 
 /* Animations */
 @keyframes weddingGradientShift {
+
   0%,
   100% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
@@ -219,12 +219,15 @@ withDefaults(defineProps<Props>(), {
     opacity: 0;
     transform: translateX(0) rotate(0deg);
   }
+
   10% {
     opacity: 0.3;
   }
+
   90% {
     opacity: 0.3;
   }
+
   100% {
     bottom: 110%;
     opacity: 0;
@@ -233,12 +236,14 @@ withDefaults(defineProps<Props>(), {
 }
 
 @keyframes initialsGlow {
+
   0%,
   100% {
     opacity: 1;
     transform: scale(1);
     text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
   }
+
   50% {
     opacity: 0.9;
     transform: scale(1.05);
@@ -247,11 +252,13 @@ withDefaults(defineProps<Props>(), {
 }
 
 @keyframes titlePulse {
+
   0%,
   100% {
     opacity: 1;
     transform: scale(1);
   }
+
   50% {
     opacity: 0.8;
     transform: scale(1.02);
@@ -262,6 +269,7 @@ withDefaults(defineProps<Props>(), {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -271,6 +279,7 @@ withDefaults(defineProps<Props>(), {
   0% {
     opacity: 0.6;
   }
+
   100% {
     opacity: 1;
   }
