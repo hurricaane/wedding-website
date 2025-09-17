@@ -20,7 +20,19 @@
             }}</span>
           </AccordionTrigger>
           <AccordionContent class="px-6 pb-4">
-            <p class="text-base text-foreground/75 leading-relaxed" v-html="faq.answer"></p>
+            <template v-if="index === 0">
+              <p class="text-base text-foreground/75 leading-relaxed">
+                Le mariage sera célébré dans un esprit chic et élégant. Nous vous
+                invitons à privilégier des tenues de ville habillées dans des tons
+                <ColorTooltip label="marron/bronze" color="#8B4513" />,
+                <ColorTooltip label="vert sauge" color="#7D9D87" /> ou
+                <ColorTooltip label="champagne" color="#F7E6CA" />, afin d’harmoniser
+                l’ensemble.
+              </p>
+            </template>
+            <template v-else>
+              <p class="text-base text-foreground/75 leading-relaxed" v-html="faq.answer"></p>
+            </template>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -45,7 +57,7 @@ const faqs: FAQ[] = [
   {
     question: "Quel est le thème du mariage ?",
     answer:
-      "Le mariage sera célébré dans un esprit chic et élégant. Nous vous invitons à privilégier des tenues de ville habillées dans des tons marron/bronze ou vert sauge, afin d’harmoniser l’ensemble.",
+      "",
   },
   {
     question: "Où se déroulera la cérémonie religieuse ?",
