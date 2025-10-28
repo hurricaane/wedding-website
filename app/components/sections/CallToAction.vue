@@ -19,7 +19,7 @@
         <div class="bg-card rounded-2xl p-6 border border-border elegant-shadow">
           <Icon name="lucide:calendar" size="1.4em" class="w-8 h-8 text-gold-600 mx-auto mb-3" />
           <h3 class="font-semibold text-foreground mb-2">RSVP avant le</h3>
-          <p class="text-foreground/75">15 octobre 2025</p>
+          <p class="text-foreground/75">15 novembre 2025</p>
         </div>
 
         <div class="bg-card rounded-2xl p-6 border border-border elegant-shadow">
