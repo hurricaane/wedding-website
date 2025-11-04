@@ -88,7 +88,7 @@ const faqs: FAQ[] = [
   {
     question: "Comment confirmer ma présence ?",
     answer:
-      "Merci de confirmer votre présence avant le 15 octobre 2025 via notre formulaire en ligne. Cela nous aidera à organiser au mieux cette journée avec vous.",
+      "Merci de confirmer votre présence avant le 15 novembre 2025 via notre formulaire en ligne. Cela nous aidera à organiser au mieux cette journée avec vous.",
   },
   {
     question: "Y aura-t-il un plan de table ?",

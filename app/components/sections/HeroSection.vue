@@ -84,7 +84,7 @@
           plus qu'un.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
           <Button @click="navigateToRSVP" size="lg"
             class="bg-gradient-to-r from-champagne-300 to-gold-400 hover:from-champagne-400 hover:to-gold-500 hover:scale-105 transition-all duration-300 elegant-shadow text-lg px-8 py-4 h-auto rounded-2xl text-white font-semibold border-0 cursor-pointer">
             <Icon name="lucide:heart" class="w-5 h-5 mr-2" />
